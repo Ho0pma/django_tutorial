@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+
+    {% include 'women/includes/naw.html' only with title='lol'%}
+
+    <ul>
+        {% for p in posts %}
+            {% if p.is_published %}
+                <li>
+                        <h2>{{ p.title }}</h2>
+                        <p>{{ p.content }}</p>
+                        <p><a href='{% url "post" p.id%}'>Читать пост</a></p>
+                        {% if not forloop.last %}
+                            <hr>
+                        {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    {% include 'women/includes/naw.html' %}
+
+{% endblock %}
+
+<!--# 1 ####################################################################################################3-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>{{ title }}</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash;главное меню&ndash;&gt;-->
+<!--<ul>-->
+<!--    <li><a href="{% url 'home' %}">Главная страница</a></li>-->
+<!--    {% for x in menu %}-->
+<!--        {% if not forloop.last %}-->
+<!--            <li>-->
+<!--        {% else %}-->
+<!--            <li class="last">-->
+<!--        {% endif %}-->
+<!--            <a href="{% url x.url_name %}">{{ x.title }}</a>-->
+<!--        </li>-->
+<!--    {% endfor %}-->
+<!--</ul>-->
+
+<!--<h1>{{ title }}</h1>-->
+
+<!--<ul>-->
+<!--    {% for p in posts %}-->
+<!--        {% if p.is_published %}-->
+<!--            <li>-->
+<!--                    <h2>{{ p.title }}</h2>-->
+<!--                    <p>{{ p.content }}</p>-->
+<!--                    <p><a href='{% url "post" p.id%}'>Читать пост</a></p>-->
+<!--                    {% if not forloop.last %}-->
+<!--                        <hr>-->
+<!--                    {% endif %}-->
+<!--            </li>-->
+<!--        {% endif %}-->
+<!--    {% endfor %}-->
+<!--</ul>-->
+<!--</body>-->
+</html>

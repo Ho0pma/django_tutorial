@@ -1,0 +1,36 @@
+{% extends 'base_actual.html' %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+{% endblock %}
+
+
+
+
+<!--1) ##############################################################################-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>{{ title }}</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash;навигация по меню&ndash;&gt;-->
+<!--<ul>-->
+<!--    <li><a href="{% url 'home' %}">Главная страница</a></li>-->
+<!--    {% for x in menu %}-->
+<!--        {% if not forloop.last %}-->
+<!--            <li>-->
+<!--        {% else %}-->
+<!--            <li class="last">-->
+<!--        {% endif %}-->
+<!--            <a href="{% url x.url_name %}">{{ x.title }}</a>-->
+<!--        </li>-->
+<!--    {% endfor %}-->
+<!--</ul>-->
+
+<!--<h1>{{ title }}</h1>-->
+
+<!--</body>-->
+<!--</html>-->
