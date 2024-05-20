@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'women.apps.WomenConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -78,8 +79,12 @@ WSGI_APPLICATION = 'sitewomen.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django_db',      # Имя базы данных
+        'USER': 'user',           # Имя пользователя
+        'PASSWORD': 'pass',       # Пароль пользователя
+        'HOST': 'localhost',      # Имя хоста (для Docker Compose)
+        'PORT': '5432',           # Порт
     }
 }
 

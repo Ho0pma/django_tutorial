@@ -1,8 +1,10 @@
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, Http404
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify, cut, first, last, join
+
+from .models import Women
 
 menu = [
     {'title': "О сайте", 'url_name': 'about'},
@@ -26,18 +28,39 @@ data_db = [
 
 ]
 
+# имитация дб для вывода категорий
+cats_db = [
+    {'id': 1, 'name': 'Актрисы'},
+    {'id': 2, 'name': 'Певицы'},
+    {'id': 3, 'name': 'Спортсменки'},
+]
+
 def index(request: HttpRequest):
+    # posts = Women.objects.filter(is_published=False)
+    # posts = Women.objects.all()
+
+    # свой менеджер
+    posts = Women.published.all()
+
     data = {
         'title': 'Главная страница',
         'menu': menu,
-        'posts': data_db
+        'posts': posts
     }
 
     return render(request, 'women/index_actual.html', context=data)
 
 
-def show_post(request, post_id):
-    return HttpResponse(f'Отображение статьи с id: {post_id}')
+def show_post(request, post_slug):
+    post = get_object_or_404(Women, slug=post_slug)
+    data = {
+        'title': post.title,
+        'menu': menu,
+        'post': post,
+        'cat_selected': 1
+    }
+
+    return render(request, 'women/post.html', context=data)
 
 def about(request: HttpRequest) -> HttpResponse:
     data = {
@@ -55,6 +78,9 @@ def contact(request):
 
 def login(request):
     return HttpResponse('Авторизация')
+
+def show_category(request, cat_id):
+    return index(request)
 
 def page_not_found(request, exception):
     return HttpResponseNotFound('<h1>Page not found</h1>')
@@ -88,21 +114,6 @@ def page_not_found(request, exception):
 
 # def new(request):
 #     return HttpResponseNotFound('<h1>new</h1>')
-
-# -------------------------------------------------------------------------------------------------------------------- #
-# task: https://stepik.org/lesson/1089285/step/6?auth=login&unit=1099863
-# def post_detail(request):
-#     if request.GET:
-#         return HttpResponse('|'.join(f'{k}={v}' for k, v in request.GET.items()))
-#     else:
-#         return HttpResponse("GET is empty")
-
-# task: https://stepik.org/lesson/1089285/step/13?auth=login&unit=1099863
-# def posts_list(request: HttpRequest, year):
-#     if 1990 <= year <= 2023:
-#         return HttpResponse(f'posts: {year}')
-#
-#     raise Http404()
 
 # -------------------------------------------------------------------------------------------------------------------- #
 # menu = ['About', 'Add', 'FAQ', 'Log in']
