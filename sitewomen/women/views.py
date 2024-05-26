@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify, cut, first, last, join
 
-from .models import Women
+from .models import Women, Category, TagPost
 
 menu = [
     {'title': "О сайте", 'url_name': 'about'},
@@ -28,12 +28,12 @@ data_db = [
 
 ]
 
-# имитация дб для вывода категорий
-cats_db = [
-    {'id': 1, 'name': 'Актрисы'},
-    {'id': 2, 'name': 'Певицы'},
-    {'id': 3, 'name': 'Спортсменки'},
-]
+# # имитация дб для вывода категорий
+# cats_db = [
+#     {'id': 1, 'name': 'Актрисы'},
+#     {'id': 2, 'name': 'Певицы'},
+#     {'id': 3, 'name': 'Спортсменки'},
+# ]
 
 def index(request: HttpRequest):
     # posts = Women.objects.filter(is_published=False)
@@ -41,15 +41,15 @@ def index(request: HttpRequest):
 
     # свой менеджер
     posts = Women.published.all()
+    print(f'1:{posts}')
 
     data = {
         'title': 'Главная страница',
         'menu': menu,
-        'posts': posts
+        'posts': posts,
+        'cat_selected': 0,
     }
-
     return render(request, 'women/index_actual.html', context=data)
-
 
 def show_post(request, post_slug):
     post = get_object_or_404(Women, slug=post_slug)
@@ -79,12 +79,46 @@ def contact(request):
 def login(request):
     return HttpResponse('Авторизация')
 
-def show_category(request, cat_id):
-    return index(request)
+def show_category(request, cat_slug):
+    # выбирается запись из модели Category по слагу
+    category = get_object_or_404(Category, slug=cat_slug)
+    print(category)
+    posts = Women.published.filter(cat_id=category.pk)
+    print(posts)
+
+    data = {
+        'title': f'Рубрика: {category.name}',
+        'menu': menu,
+        'posts': posts,
+        'cat_selected': category.pk
+    }
+
+    return render(request, 'women/index_actual.html', context=data)
 
 def page_not_found(request, exception):
     return HttpResponseNotFound('<h1>Page not found</h1>')
 
+def show_tag_postlist(request, tag_slug):
+    # читаем пост из модели, где slug=tag_slug. Это будет точно одна запись, тк slug в бд uniq.
+    # tag - это объект TagPost
+    tag = get_object_or_404(TagPost, slug=tag_slug)
+
+    # через параметр related_names (tags), который связывает две модели (вторичный ключ), можем
+    # выбрать только те, что опубликованы.
+    posts = tag.tags.filter(is_published=Women.Status.PUBLISHED)
+
+    # формируем словарь, который будем передавать в шаблон
+    data = {
+        # второй tag - это один из атрибутов модели TagPost
+        'title': f'Тег: {tag.tag}',
+        'menu': menu,
+        'posts': posts,
+
+        # если None ничего не будет отображаться синим
+        'cat_selected': None
+    }
+
+    return render(request, 'women/index_actual.html', context=data)
 # -------------------------------------------------------------------------------------------------------------------- #
 
 # def categories(request, cat_id):
