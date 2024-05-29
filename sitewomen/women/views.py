@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify, cut, first, last, join
 
+from .forms import AddPostForm
 from .models import Women, Category, TagPost
 
 menu = [
@@ -14,19 +15,19 @@ menu = [
 ]
 
 # пример данных из базы данных
-data_db = [
-
-    {'id': 1,
-     'title': 'Анджелина Джоли',
-     'content': '''<h1>Анджелина Джоли</h1> (англ. Angelina Jolie[7], при рождении Войт (англ. Voight), ранее Джоли Питт (англ. Jolie Pitt); род. 4 июня 1975, Лос-Анджелес, Калифорния, США) — американская актриса кино, телевидения и озвучивания, кинорежиссёр, сценаристка, продюсер, фотомодель, посол доброй воли ООН.
-    Обладательница премии «Оскар», трёх премий «Золотой глобус» (первая актриса в истории, три года подряд выигравшая премию) и двух «Премий Гильдии киноактёров США».''',
-     'is_published': True},
-
-    {'id': 2, 'title': 'Марго Робби', 'content': 'Биография Марго Робби', 'is_published': False},
-
-    {'id': 3, 'title': 'Джулия Робертс', 'content': 'Биография Джулия Робертс', 'is_published': True},
-
-]
+# data_db = [
+#
+#     {'id': 1,
+#      'title': 'Анджелина Джоли',
+#      'content': '''<h1>Анджелина Джоли</h1> (англ. Angelina Jolie[7], при рождении Войт (англ. Voight), ранее Джоли Питт (англ. Jolie Pitt); род. 4 июня 1975, Лос-Анджелес, Калифорния, США) — американская актриса кино, телевидения и озвучивания, кинорежиссёр, сценаристка, продюсер, фотомодель, посол доброй воли ООН.
+#     Обладательница премии «Оскар», трёх премий «Золотой глобус» (первая актриса в истории, три года подряд выигравшая премию) и двух «Премий Гильдии киноактёров США».''',
+#      'is_published': True},
+#
+#     {'id': 2, 'title': 'Марго Робби', 'content': 'Биография Марго Робби', 'is_published': False},
+#
+#     {'id': 3, 'title': 'Джулия Робертс', 'content': 'Биография Джулия Робертс', 'is_published': True},
+#
+# ]
 
 # # имитация дб для вывода категорий
 # cats_db = [
@@ -37,11 +38,10 @@ data_db = [
 
 def index(request: HttpRequest):
     # posts = Women.objects.filter(is_published=False)
-    # posts = Women.objects.all()
+    posts = Women.objects.all().select_related('cat')
 
     # свой менеджер
-    posts = Women.published.all()
-    print(f'1:{posts}')
+    # posts = Women.published.all().select_related('cat')
 
     data = {
         'title': 'Главная страница',
@@ -71,7 +71,19 @@ def about(request: HttpRequest) -> HttpResponse:
     return render(request, 'women/about.html', context=data)
 
 def addpage(request):
-    return HttpResponse('Добавление статьи')
+    if request.method == 'POST':
+        form = AddPostForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+    else:
+        form = AddPostForm()
+
+    data = {
+        'menu': menu,
+        'title': 'Добавление статьи',
+        'form': form
+    }
+    return render(request, 'women/addpage.html', context=data)
 
 def contact(request):
     return HttpResponse('Обратная связь')
@@ -82,9 +94,7 @@ def login(request):
 def show_category(request, cat_slug):
     # выбирается запись из модели Category по слагу
     category = get_object_or_404(Category, slug=cat_slug)
-    print(category)
-    posts = Women.published.filter(cat_id=category.pk)
-    print(posts)
+    posts = Women.published.filter(cat_id=category.pk).select_related('cat')
 
     data = {
         'title': f'Рубрика: {category.name}',
@@ -105,7 +115,7 @@ def show_tag_postlist(request, tag_slug):
 
     # через параметр related_names (tags), который связывает две модели (вторичный ключ), можем
     # выбрать только те, что опубликованы.
-    posts = tag.tags.filter(is_published=Women.Status.PUBLISHED)
+    posts = tag.tags.filter(is_published=Women.Status.PUBLISHED).select_related('cat')
 
     # формируем словарь, который будем передавать в шаблон
     data = {
