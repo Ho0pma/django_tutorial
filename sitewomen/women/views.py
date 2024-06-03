@@ -3,8 +3,9 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify, cut, first, last, join
+from unidecode import unidecode
 
-from .forms import AddPostForm
+from .forms import AddPostForm, UploadFileForm
 from .models import Women, Category, TagPost
 
 menu = [
@@ -62,10 +63,27 @@ def show_post(request, post_slug):
 
     return render(request, 'women/post.html', context=data)
 
+def handle_uploaded_file(f):
+    with open(f"upload/{f.name}", "wb+") as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+
 def about(request: HttpRequest) -> HttpResponse:
+
+    # if request.method == 'POST':
+    #     handle_uploaded_file(request.FILES['file_upload'])
+
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(form.cleaned_data['file'])
+    else:
+        form = UploadFileForm()
+
     data = {
         'title': 'About',
-        'menu': menu
+        'menu': menu,
+        'form': form
     }
 
     return render(request, 'women/about.html', context=data)
@@ -74,7 +92,9 @@ def addpage(request):
     if request.method == 'POST':
         form = AddPostForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
+            form.save()
+            return redirect('home')
+
     else:
         form = AddPostForm()
 
