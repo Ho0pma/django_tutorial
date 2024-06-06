@@ -27,6 +27,8 @@ class Women(models.Model):
             MaxLengthValidator(100, message='max 100 symbols'),
         ]
     )
+    photo = models.ImageField(upload_to='photos/%Y/%m/%d/', default=None,
+                              blank=True, null=True, verbose_name='Фото')
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
     is_published = models.IntegerField(choices=Status.choices, default=Status.DRAFT)
@@ -85,4 +87,5 @@ class Husband(models.Model):
     def __str__(self):
         return self.name
 
-
+class UploadFiles(models.Model):
+    file = models.FileField(upload_to='uploads_model')

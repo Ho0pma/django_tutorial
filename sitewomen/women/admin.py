@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.core.checks import messages
 from django.db.models.functions import Length
+from django.utils.safestring import mark_safe
 
 from women.models import Women, Category, Husband
 
@@ -26,13 +27,13 @@ class MarriedFilter(admin.SimpleListFilter):
 @admin.register(Women)
 class WomenAdmin(admin.ModelAdmin):
     # поля, которые будут видны при добавлении
-    fields = ['title', 'slug', 'content', 'cat', 'husband', 'tags']
+    fields = ['title', 'slug', 'content', 'photo', 'post_photo', 'cat', 'husband', 'tags']
 
     # исключения полей из выборки при добавлении новой записи
     # exclude = ['tags', 'is_published']
 
     # поля только для чтения при просмотре записи
-    # readonly_fields = ['slug']
+    readonly_fields = ['post_photo']
 
     # горизонтальное отображение
     filter_horizontal = ['tags']
@@ -44,7 +45,7 @@ class WomenAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ['title']}
 
     # поля для вывода в админке
-    list_display = ('id', 'title', 'time_create', 'is_published', 'cat', 'brief_info')
+    list_display = ('id', 'title', 'time_create', 'post_photo', 'is_published', 'cat', 'brief_info')
 
     # кликабельные поля:
     list_display_links = ('id', 'title')
@@ -67,10 +68,19 @@ class WomenAdmin(admin.ModelAdmin):
     # панель с фильтрами
     list_filter = (MarriedFilter, 'cat__name', 'is_published')
 
+    # отображение панели сохранения сверху
+    save_on_top = True
+
     # формирование своего поля, которого нет в бд
     @admin.display(description='Кол-во символов', ordering=Length('content'))
     def brief_info(self, women: Women):
         return f'Описание содержит {len(women.content)} символов'
+
+    @admin.display(description='Изображение', ordering='content')
+    def post_photo(self, women: Women):
+        if women.photo:
+            return mark_safe(f"<a href='{women.photo.url}'><img src='{women.photo.url}' alt='{women.title}' width='50'></a>")
+        return 'Без фото'
 
     @admin.action(description='Опубликовать выбранные записи')
     def set_published(self, request, queryset):

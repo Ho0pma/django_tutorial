@@ -2,7 +2,8 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator, MaxLengthValidator
 from django.utils.deconstruct import deconstructible
-
+from django.template.defaultfilters import slugify
+from unidecode import unidecode
 from .models import Category, Husband, Women
 
 
@@ -22,11 +23,11 @@ class RussianValidator:
 class AddPostForm(forms.ModelForm):
     cat = forms.ModelChoiceField(queryset=Category.objects.all(), empty_label='Категория не выбрана', label='Категория')
     husband = forms.ModelChoiceField(queryset=Husband.objects.all(), required=False, empty_label='не замужем', label='Замужем за')
-
+    is_published = forms.BooleanField(initial=True, required=False)
     class Meta:
         model = Women
         # fields = '__all__'
-        fields = ['title', 'slug', 'content', 'is_published', 'cat', 'husband', 'tags']
+        fields = ['title', 'content', 'photo', 'is_published', 'cat', 'husband', 'tags']
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-input'}),
@@ -36,6 +37,13 @@ class AddPostForm(forms.ModelForm):
         labels = {
             'content': 'Контик'
         }
+
+    # метод для сохранения слага
+    # TODO: вынести в модель
+    def save(self, commit=True):
+        model = super().save(commit=False)
+        model.slug = self.cleaned_data['slug']
+        model.save()
 
     def clean_title(self):
         title = self.cleaned_data['title']
