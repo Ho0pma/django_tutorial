@@ -25,6 +25,8 @@ urlpatterns = [
     # path('tag/<slug:tag_slug>/', views.show_tag_postlist, name='tag'),
     path('tag/<slug:tag_slug>/', views.ShowTagPostList.as_view(), name='tag'),
 
+    path('edit/<slug:edit_slug>/', views.UpdatePage.as_view(), name='edit_page'),
+
     # path('new/', views.new, name='new'),
     # path('cats/<int:cat_id>/', views.categories, name='cat_id'),
     # path('cats/<slug:slug_id>/', views.categories_by_slug, name='cats'),
