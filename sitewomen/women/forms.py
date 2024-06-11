@@ -39,11 +39,20 @@ class AddPostForm(forms.ModelForm):
         }
 
     # метод для сохранения слага
-    # TODO: вынести в модель
+    # # TODO: вынести в модель
+    # def save(self, commit=True):
+    #     model = super().save(commit=False)
+    #     model.slug = self.cleaned_data['slug']
+    #     model.save()
+
     def save(self, commit=True):
         model = super().save(commit=False)
-        model.slug = self.cleaned_data['slug']
-        model.save()
+        # Получаем slug из cleaned_data, если он есть
+        model.slug = self.cleaned_data.get('slug', model.slug)
+        if commit:
+            model.save()
+        return model
+
 
     def clean_title(self):
         title = self.cleaned_data['title']

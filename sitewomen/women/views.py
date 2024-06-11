@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, Http404
 from django.shortcuts import redirect, render, get_object_or_404
@@ -38,6 +40,7 @@ class ShowPost(DataMixin, DetailView):
     def get_object(self, queryset=None):
         return get_object_or_404(Women.published, slug=self.kwargs[self.slug_url_kwarg])
 
+@login_required(login_url='users:login')
 def about(request: HttpRequest) -> HttpResponse:
     contact_list = Women.published.all()
     paginator = Paginator(contact_list, 3)
@@ -53,17 +56,26 @@ def about(request: HttpRequest) -> HttpResponse:
     return render(request, 'women/about.html', context=data)
 
 
-class AddPage(DataMixin, FormView):
+class AddPage(LoginRequiredMixin, DataMixin, FormView):
     form_class = AddPostForm
     template_name = 'women/addpage.html'
     success_url = reverse_lazy('home')
     title_page = 'Добавление статьи'
+    # login_url = '/admin/' # редирект неавторизованного пользователя
+
+    # старый вар сохранения слага
+    # def form_valid(self, form):
+    #     form.cleaned_data['slug'] = slugify(unidecode(form.cleaned_data['title']))
+    #     form.save()
+    #     return super().form_valid(form)
 
     def form_valid(self, form):
-        form.cleaned_data['slug'] = slugify(unidecode(form.cleaned_data['title']))
-        print(form.cleaned_data)
-        form.save()
+        w = form.save(commit=False)  # Создаем экземпляр модели без сохранения в бд
+        w.author = self.request.user  # Устанавливаем автора
+        w.slug = slugify(unidecode(form.cleaned_data['title']))  # Генерируем slug на основе заголовка
+        w.save()  # Сохраняем экземпляр модели в бд
         return super().form_valid(form)
+
 
 
 class UpdatePage(DataMixin, UpdateView):
