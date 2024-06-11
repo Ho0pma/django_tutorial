@@ -17,7 +17,7 @@ class LoginUser(LoginView):
     #     return reverse_lazy('home')
 
 
-
+#
 def login_user(request: HttpRequest):
     if request.method == 'POST':
         form = LoginUserForm(request.POST)
