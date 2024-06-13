@@ -1,5 +1,5 @@
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.paginator import Paginator
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, Http404
 from django.shortcuts import redirect, render, get_object_or_404
@@ -56,12 +56,13 @@ def about(request: HttpRequest) -> HttpResponse:
     return render(request, 'women/about.html', context=data)
 
 
-class AddPage(LoginRequiredMixin, DataMixin, FormView):
+class AddPage(PermissionRequiredMixin, LoginRequiredMixin, DataMixin, FormView):
     form_class = AddPostForm
     template_name = 'women/addpage.html'
     success_url = reverse_lazy('home')
     title_page = 'Добавление статьи'
     # login_url = '/admin/' # редирект неавторизованного пользователя
+    permission_required = 'women.add_women' # <приложение>.<действие>_<таблица>
 
     # старый вар сохранения слага
     # def form_valid(self, form):
@@ -77,15 +78,16 @@ class AddPage(LoginRequiredMixin, DataMixin, FormView):
         return super().form_valid(form)
 
 
-
-class UpdatePage(DataMixin, UpdateView):
+class UpdatePage(PermissionRequiredMixin, DataMixin, UpdateView):
     model = Women
     fields = ['title', 'content', 'photo', 'is_published', 'cat', 'husband', 'tags']
     success_url = reverse_lazy('home')
     template_name = 'women/addpage.html'
     slug_url_kwarg = 'edit_slug' # если хотим, отбирать по слагу
     title_page = 'Редактирование статьи'
+    permission_required = 'women.change_women' # можно изменять статью только с этим пермишионом
 
+@permission_required(perm='women.add_women', raise_exception=True)
 def contact(request):
     return HttpResponse('Обратная связь')
 
