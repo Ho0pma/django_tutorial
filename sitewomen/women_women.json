@@ -1,0 +1,504 @@
+[
+{
+  "model": "women.women",
+  "pk": 1,
+  "fields": {
+    "title": "Турман, Ума",
+    "slug": "slug-uma",
+    "content": "У́ма Кару́на Ту́рман (англ. Uma Karuna Thurman; род. 29 апреля 1970, Бостон, США) — американская актриса и бывшая модель.\n        \n        Сыграла главные роли в различных кинолентах, от романтических комедий и драм до научно-фантастических фильмов и боевиков. После ранних ролей в таких фильмах, как «Опасные связи», она добилась международной известности в 1994 году, сыграв роль Мии Уоллес в «Криминальном чтиве» Квентина Тарантино, за которую была номинирована на премии «Оскар», «Золотой глобус» и BAFTA.",
+    "photo": "",
+    "time_create": "2024-05-22T09:14:21.715Z",
+    "time_update": "2024-05-27T11:34:27.722Z",
+    "is_published": 1,
+    "cat": 1,
+    "husband": null,
+    "author": null,
+    "tags": [
+      2,
+      4
+    ]
+  }
+},
+{
+  "model": "women.women",
+  "pk": 2,
+  "fields": {
+    "title": "Лопес, Дженнифер",
+    "slug": "slug-lopec",
+    "content": "Дже́ннифер Линн А́ффлек[1] (англ. Jennifer Lynn Affleck, ранее — Ло́пес (англ. Lopez) или Джей Ло (англ. J.Lo); род. 24 июля 1969, Бронкс, Нью-Йорк) — американская актриса, певица, танцовщица, модельер, продюсер и бизнесвумен. Впервые получила известность в 1991 году в качестве танцовщицы труппы Fly Girl[англ.] в телешоу In Living Color[англ.]. Она оставалась постоянной участницей коллектива до 1993 года, когда решила начать полноценную актёрскую карьеру. Свою первую главную роль Лопес получила в биографическом фильме о певице Селене в 1997 году. Эта роль принесла ей номинацию на «Золотой глобус». ",
+    "photo": "",
+    "time_create": "2024-05-22T09:14:21.733Z",
+    "time_update": "2024-05-24T11:20:28.915Z",
+    "is_published": 1,
+    "cat": 1,
+    "husband": 2,
+    "author": null,
+    "tags": [
+      2
+    ]
+  }
+},
+{
+  "model": "women.women",
+  "pk": 3,
+  "fields": {
+    "title": "Уинслет, Кейт",
+    "slug": "slug-yinclet",
+    "content": "Кейт Эли́забет Уи́нслет (англ. Kate Elizabeth Winslet; род. 5 октября 1975, Рединг, Беркшир, Великобритания) — английская актриса[1] театра, кино, телевидения и озвучивания.\n\nАктёрскую карьеру[англ.] Кейт Уинслет начала в 1991 году, дебютировав на британском телевидении. Дебютом в кино для Уинслет стала картина «Небесные создания» (1994), получившая положительные отзывы кинокритиков[2].",
+    "photo": "",
+    "time_create": "2024-05-22T09:14:21.736Z",
+    "time_update": "2024-05-27T11:34:27.724Z",
+    "is_published": 1,
+    "cat": 1,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 4,
+  "fields": {
+    "title": "Блэр Уолдорф",
+    "slug": "slug-yolderf",
+    "content": "Блэр Корне́лия «Би» Уо́лдорф (англ. Blair Cornelia «B» Waldorf)[1] — главная героиня серии романов «Сплетница», написанных Сесилией фон Цигезар[2]. В телесериале по мотивам серии роль героини исполнила Лейтон Мистер[3].\r\n\r\nЖизнь Блэр Уолдорф и других героев находится под постоянным взором таинственного, но известного блогера под ником «Сплетница».",
+    "photo": "",
+    "time_create": "2024-05-22T09:14:21.739Z",
+    "time_update": "2024-05-27T07:07:22.755Z",
+    "is_published": 1,
+    "cat": 6,
+    "husband": 5,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 5,
+  "fields": {
+    "title": "Лиза Трусова",
+    "slug": "slug-try",
+    "content": "крутая девчонка",
+    "photo": "",
+    "time_create": "2024-05-22T09:14:21.741Z",
+    "time_update": "2024-05-22T09:14:21.741Z",
+    "is_published": 1,
+    "cat": 1,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 6,
+  "fields": {
+    "title": "Екатерина Шишкина",
+    "slug": "kat-shish",
+    "content": "Биография Кати Шишкиной",
+    "photo": "",
+    "time_create": "2024-05-28T12:15:27.961Z",
+    "time_update": "2024-05-28T12:15:27.961Z",
+    "is_published": 0,
+    "cat": 5,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 7,
+  "fields": {
+    "title": "Arcane KOK",
+    "slug": "arcane-kok",
+    "content": "что то про аркейн",
+    "photo": "",
+    "time_create": "2024-05-28T12:30:42.767Z",
+    "time_update": "2024-05-28T12:30:42.767Z",
+    "is_published": 0,
+    "cat": 5,
+    "husband": 4,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 8,
+  "fields": {
+    "title": "Русская Маша",
+    "slug": "russkaja-masha",
+    "content": "контент для русских",
+    "photo": "",
+    "time_create": "2024-05-28T12:42:19.645Z",
+    "time_update": "2024-05-28T12:42:19.645Z",
+    "is_published": 0,
+    "cat": 6,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 10,
+  "fields": {
+    "title": "new new",
+    "slug": "new-new",
+    "content": "new222222",
+    "photo": "",
+    "time_create": "2024-05-28T12:48:40.484Z",
+    "time_update": "2024-06-07T08:22:11.529Z",
+    "is_published": 0,
+    "cat": 6,
+    "husband": null,
+    "author": null,
+    "tags": [
+      1
+    ]
+  }
+},
+{
+  "model": "women.women",
+  "pk": 11,
+  "fields": {
+    "title": "жесткая мазафакерша",
+    "slug": "zhestkaia-mazafakersha",
+    "content": "контент мазафакерши",
+    "photo": "",
+    "time_create": "2024-05-28T12:49:03.341Z",
+    "time_update": "2024-05-28T12:49:03.341Z",
+    "is_published": 0,
+    "cat": 6,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 12,
+  "fields": {
+    "title": "РУС ENG",
+    "slug": "rus-eng",
+    "content": "русско ангельский контент",
+    "photo": "",
+    "time_create": "2024-05-28T12:49:59.709Z",
+    "time_update": "2024-05-28T12:49:59.709Z",
+    "is_published": 0,
+    "cat": 1,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 13,
+  "fields": {
+    "title": "ex",
+    "slug": "ex-slug",
+    "content": "fff",
+    "photo": "",
+    "time_create": "2024-05-30T09:48:06.631Z",
+    "time_update": "2024-05-30T09:48:06.631Z",
+    "is_published": 1,
+    "cat": 1,
+    "husband": 3,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 14,
+  "fields": {
+    "title": "trash",
+    "slug": "trs",
+    "content": "trash content",
+    "photo": "",
+    "time_create": "2024-05-30T09:49:31.896Z",
+    "time_update": "2024-05-30T09:49:31.896Z",
+    "is_published": 1,
+    "cat": 5,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 15,
+  "fields": {
+    "title": "kkkk-sss",
+    "slug": "kkkk-sss",
+    "content": "contik",
+    "photo": "",
+    "time_create": "2024-05-30T10:02:25.364Z",
+    "time_update": "2024-05-30T10:02:25.364Z",
+    "is_published": 1,
+    "cat": 6,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 16,
+  "fields": {
+    "title": "ФФФФФФФФФФФФФФФ",
+    "slug": "fffffffffffffff",
+    "content": "ФФРФРРФРФР",
+    "photo": "",
+    "time_create": "2024-05-30T12:28:18.133Z",
+    "time_update": "2024-05-30T12:28:18.133Z",
+    "is_published": 1,
+    "cat": 6,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 17,
+  "fields": {
+    "title": "ыфвавфаыва",
+    "slug": "yfvavfayva",
+    "content": "ооооооооооооооооооо",
+    "photo": "",
+    "time_create": "2024-05-30T12:28:28.936Z",
+    "time_update": "2024-05-30T12:28:28.936Z",
+    "is_published": 1,
+    "cat": 5,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 18,
+  "fields": {
+    "title": "авыываываыв",
+    "slug": "avyyvayvayv",
+    "content": "ппппппппппппппп",
+    "photo": "",
+    "time_create": "2024-05-30T12:29:07.696Z",
+    "time_update": "2024-05-30T12:29:07.696Z",
+    "is_published": 1,
+    "cat": 1,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 19,
+  "fields": {
+    "title": "ппппппппппп",
+    "slug": "ffdfsdfsd",
+    "content": "ffffffffffffffffffff",
+    "photo": "",
+    "time_create": "2024-05-31T14:36:49.333Z",
+    "time_update": "2024-05-31T14:36:49.333Z",
+    "is_published": 0,
+    "cat": 6,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 20,
+  "fields": {
+    "title": "photo_try",
+    "slug": "photo-try",
+    "content": "photo content",
+    "photo": "photos/2024/\n/03/2.png",
+    "time_create": "2024-06-03T16:49:21.120Z",
+    "time_update": "2024-06-03T16:49:21.120Z",
+    "is_published": 1,
+    "cat": 5,
+    "husband": null,
+    "author": null,
+    "tags": [
+      3
+    ]
+  }
+},
+{
+  "model": "women.women",
+  "pk": 21,
+  "fields": {
+    "title": "FFFFFFFFFFFFFFFFFFFFFFF",
+    "slug": "fffff-ffff",
+    "content": "RRRRRRRRRRR",
+    "photo": "photos/2024/06/03/2.png",
+    "time_create": "2024-06-03T16:51:42.124Z",
+    "time_update": "2024-06-03T16:51:42.124Z",
+    "is_published": 1,
+    "cat": 6,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 26,
+  "fields": {
+    "title": "PFDSFPSDPFSDFP",
+    "slug": "pfdsfpsdpfsdfp",
+    "content": "FSDFSDFSFDSF",
+    "photo": "photos/2024/06/03/4_PGfU8Zr.png",
+    "time_create": "2024-06-03T18:10:23.623Z",
+    "time_update": "2024-06-03T18:10:23.623Z",
+    "is_published": 1,
+    "cat": 6,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 27,
+  "fields": {
+    "title": "ННННННННН",
+    "slug": "nnnnnnnnn",
+    "content": "123432432412",
+    "photo": "photos/2024/06/05/2.png",
+    "time_create": "2024-06-05T08:27:30.078Z",
+    "time_update": "2024-06-05T08:27:30.078Z",
+    "is_published": 1,
+    "cat": 5,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 28,
+  "fields": {
+    "title": "NON PUBLISHED",
+    "slug": "non-published",
+    "content": "NON PUBLISHED CONT",
+    "photo": "",
+    "time_create": "2024-06-05T10:10:05.283Z",
+    "time_update": "2024-06-05T10:10:05.283Z",
+    "is_published": 0,
+    "cat": 1,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 29,
+  "fields": {
+    "title": "Form View Test",
+    "slug": "form-view-test",
+    "content": "FormViewTest cont",
+    "photo": "",
+    "time_create": "2024-06-06T11:37:48.462Z",
+    "time_update": "2024-06-06T11:37:48.462Z",
+    "is_published": 1,
+    "cat": 5,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 30,
+  "fields": {
+    "title": "dsfasadfasddfas",
+    "slug": "dsfasadfasddfas",
+    "content": "dsdssdsdsdfsfd",
+    "photo": "",
+    "time_create": "2024-06-06T11:48:44.644Z",
+    "time_update": "2024-06-06T11:48:44.644Z",
+    "is_published": 1,
+    "cat": 1,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 31,
+  "fields": {
+    "title": "author test",
+    "slug": "author-test",
+    "content": "GGGGGGGGGGGGGGGGg",
+    "photo": "",
+    "time_create": "2024-06-11T09:50:35.137Z",
+    "time_update": "2024-06-11T09:50:35.137Z",
+    "is_published": 1,
+    "cat": 6,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 32,
+  "fields": {
+    "title": "111111111",
+    "slug": "111111111",
+    "content": "111111111111",
+    "photo": "",
+    "time_create": "2024-06-11T09:57:15.216Z",
+    "time_update": "2024-06-11T09:57:15.216Z",
+    "is_published": 1,
+    "cat": 1,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 33,
+  "fields": {
+    "title": "2222222",
+    "slug": "2222222",
+    "content": "2222222",
+    "photo": "",
+    "time_create": "2024-06-11T10:03:46.264Z",
+    "time_update": "2024-06-11T10:03:46.264Z",
+    "is_published": 1,
+    "cat": 1,
+    "husband": null,
+    "author": null,
+    "tags": []
+  }
+},
+{
+  "model": "women.women",
+  "pk": 34,
+  "fields": {
+    "title": "33333333333",
+    "slug": "33333333333",
+    "content": "333333333333333333",
+    "photo": "",
+    "time_create": "2024-06-11T10:09:21.345Z",
+    "time_update": "2024-06-11T10:09:21.345Z",
+    "is_published": 1,
+    "cat": 1,
+    "husband": null,
+    "author": 1,
+    "tags": []
+  }
+}
+]
