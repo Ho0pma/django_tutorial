@@ -1,12 +1,17 @@
 from django.urls import path, re_path, register_converter
 from . import views, converters
+from django.views.decorators.cache import cache_page
+
 
 register_converter(converters.FourDigitYearConverter, 'year4')
 
 urlpatterns = [
     # path('', views.index, name='home'),
-    path('', views.WomenHome.as_view(), name='home'),
 
+    # кэширование представления
+    # path('', cache_page(10)(views.WomenHome.as_view()), name='home'),
+
+    path('', views.WomenHome.as_view(), name='home'),
 
     path('about/', views.about, name='about'),
 

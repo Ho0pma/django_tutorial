@@ -25,6 +25,10 @@ SECRET_KEY = 'django-insecure-yoegu2v#(2vj9aj2fl1(!(0h5_20!oay^wi-rs5f7zze%=0h98
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+DEBUG_TOOLBAR_CONFIG = {
+    'IS_RUNNING_TESTS': False,
+}
+
 ALLOWED_HOSTS = ['127.0.0.1']
 
 INTERNAL_IPS = [
@@ -50,13 +54,20 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # "django.middleware.cache.UpdateCacheMiddleware",
     'django.middleware.common.CommonMiddleware',
+    # "django.middleware.cache.FetchFromCacheMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
+
+# для per-site кэширования
+# CACHE_MIDDLEWARE_ALIAS = 'default'
+# CACHE_MIDDLEWARE_SECONDS = 10
+# CACHE_MIDDLEWARE_KEY_PREFIX = 'sitewomen'
 
 ROOT_URLCONF = 'sitewomen.urls'
 
@@ -95,6 +106,13 @@ DATABASES = {
         'PORT': '5432',           # Порт
     }
 }
+
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django.core.cache.backends.redis.RedisCache",
+#         "LOCATION": "redis://127.0.0.1:16379",
+#     }
+# }
 
 
 # Password validation

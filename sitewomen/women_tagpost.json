@@ -1,0 +1,30 @@
+[
+  {
+    "model": "women.tagpost",
+    "pk": 1,
+    "fields": {
+      "name": "Tag 1"
+    }
+  },
+  {
+    "model": "women.tagpost",
+    "pk": 2,
+    "fields": {
+      "name": "Tag 2"
+    }
+  },
+  {
+    "model": "women.tagpost",
+    "pk": 3,
+    "fields": {
+      "name": "Tag 3"
+    }
+  },
+  {
+    "model": "women.tagpost",
+    "pk": 4,
+    "fields": {
+      "name": "Tag 4"
+    }
+  }
+]
